@@ -1,0 +1,46 @@
+﻿@model StrAgent.Models.StrSl
+
+@{
+    ViewData["Title"] = "CreateStrSl";
+    Layout = "_LayoutPolicyholder";
+}
+
+<h1>CreateStrSl</h1>
+
+<h4>StrSl</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateStrSl">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDDogv" class="control-label"></label>
+                <select asp-for="IDDogv" class="form-control">
+                    @foreach (var id in ViewBag.Dogovors.Items)
+                    {
+                        <option value="@id.Id">@id.Id</option>
+                    }
+                </select>
+                <span asp-validation-for="IDDogv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Described" class="control-label"></label>
+                <input asp-for="Described" class="form-control" />
+                <span asp-validation-for="Described" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="StrSlList">Back to List</a>
+</div>
+

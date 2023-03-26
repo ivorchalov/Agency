@@ -1,0 +1,36 @@
+﻿@model StrAgent.Models.Tarif
+
+@{
+    ViewData["Title"] = "TarifDetails";
+    Layout = "_LayoutPolicyholder";
+}
+
+<h1>TarifDetails</h1>
+
+<div>
+    <h4>Tarif</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Conditions)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Conditions)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="TarifList">Back to List</a>
+</div>

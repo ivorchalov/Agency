@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StrAgent.Models.StrSl>
+
+@{
+    ViewData["Title"] = "StrSlList";
+    Layout = "_LayoutAgent";
+}
+
+<h1>StrSlList</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Klient
+            </th>
+            <th>
+                Agent
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDDogv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Described)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Klient.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agent.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDDogv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Described)
+            </td>
+            <td>
+                <a asp-action="EditStrSl" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="StrSlDetails" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="DeleteStrSl" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

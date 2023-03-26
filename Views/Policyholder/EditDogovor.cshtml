@@ -1,0 +1,62 @@
+﻿@model StrAgent.Models.Dogovor
+
+@{
+    ViewData["Title"] = "EditDogovor";
+    Layout = "_LayoutPolicyholder";
+}
+
+<h1>EditDogovor</h1>
+
+<h4>Dogovor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDogovor">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Status: @Model.Status</label>
+                <input type="hidden" asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="IDKl" class="form-control" />
+                <span asp-validation-for="IDKl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="IDAg" class="form-control" />
+                <span asp-validation-for="IDAg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDTr" class="control-label"></label>
+                <select asp-for="IDTr" class="form-control">
+                    @foreach (var id in ViewBag.Tarifs.Items)
+                    {
+                        <option value="@id.Id">@id.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="IDTr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Described" class="control-label"></label>
+                <input asp-for="Described" class="form-control" />
+                <span asp-validation-for="Described" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="DogovorList">Back to List</a>
+</div>

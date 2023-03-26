@@ -1,0 +1,81 @@
+﻿@model IEnumerable<StrAgent.Models.Dogovor>
+
+@{
+    ViewData["Title"] = "DogovorList";
+    Layout = "_LayoutPolicyholder";
+}
+
+<h1>DogovorList</h1>
+
+<p>
+    <a asp-action="CreateDogovor">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Number
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Klient
+            </th>
+            <th>
+                Agent
+            </th>
+            <th>
+                Tarif
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Described)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Klient.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agent.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarif.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Described)
+            </td>
+            @if (item.Status == "Accepted")
+            {
+                <td>
+                    <a asp-action="DogovorDetails" asp-route-id="@item.Id">Details</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a asp-action="EditDogovor" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="DogovorDetails" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="DeleteDogovor" asp-route-id="@item.Id">Delete</a>
+                </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>

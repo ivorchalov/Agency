@@ -1,0 +1,47 @@
+﻿@model StrAgent.Models.User
+
+@{
+    ViewData["Title"] = "EditUser";
+    Layout = "_LayoutAdmin";
+}
+
+<h1>EditUser</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditUser" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Login" class="control-label"></label>
+                <input asp-for="Login" class="form-control" />
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select asp-for="Discriminator" class="form-control">
+                    @foreach (var id in ViewBag.Roles.Items)
+                    {
+                        <option value="@id">@id</option>
+                    }
+                </select>
+                <span asp-validation-for="Discriminator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="UsersList">Back to List</a>
+</div>
+
